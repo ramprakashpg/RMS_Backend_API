@@ -29,15 +29,11 @@ ext {
 }
 
 dependencies {
-    implementation 'com.azure.spring:spring-cloud-azure-starter'
-    implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
-    implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
-    implementation 'com.azure.spring:spring-cloud-azure-starter-keyvault'
-    implementation 'com.azure.spring:spring-cloud-azure-starter-storage'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.modulith:spring-modulith-starter-core'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
