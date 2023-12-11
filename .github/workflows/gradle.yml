@@ -33,7 +33,7 @@ jobs:
     - name: Build with gradlew
       run: ./gradlew clean build
     - name: Build and Push Docker Image
-      uses: mr-smithers-excellent/docker-build-push@v4
+      uses: mr-smithers-excellent/docker-build-push@v6
       with:
         image: rampg23/rmi_backend_api
         tag: latest
