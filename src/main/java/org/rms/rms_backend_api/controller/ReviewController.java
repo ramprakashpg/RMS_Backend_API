@@ -12,6 +12,7 @@ import java.net.http.HttpResponse;
 public class ReviewController {
     @GetMapping("/")
     public ResponseEntity<Object> helloWorld() {
+        System.out.println("Server Listening..");
         return new ResponseEntity<>("Hello world", HttpStatus.OK);
     }
 }

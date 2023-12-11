@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rmi-backend-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rmi-backend-api
+  template:
+    metadata:
+      labels:
+        app: rmi-backend-api
+    spec:
+      containers:
+        - name: rmi-backend-api
+          image: rampg23/rmi_backend_api:latest
+          ports:
+            - containerPort: 8000
