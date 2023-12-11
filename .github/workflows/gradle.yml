@@ -37,10 +37,9 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build and push to the docker hub
-      run: |
-        docker build -t rmi-backend-api .
-        docker tag rmi_backend_api:latest rampg23/rmi_backend_api:latest 
-        docker push rampg23/rmi_backend_api:latest |
-      
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        push: true
+        tags: rampg23/rmi_backend_api:latest
     
