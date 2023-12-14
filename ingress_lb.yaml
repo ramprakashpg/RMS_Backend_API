@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rmi-backend-api
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: rmi-loadbalancer-service
+                port:
+                  number: 80
+            pathType: Prefix
