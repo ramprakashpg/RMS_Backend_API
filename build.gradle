@@ -39,6 +39,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
     implementation 'org.lightcouch:lightcouch:0.2.0'
+    implementation 'org.modelmapper:modelmapper:2.3.8'
 }
 
 dependencyManagement {

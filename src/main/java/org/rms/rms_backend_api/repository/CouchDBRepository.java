@@ -23,10 +23,10 @@ public class CouchDBRepository {
 
     public CouchDbClient getCouchDbClient() {
         CouchDbProperties properties = new CouchDbProperties()
-                .setDbName("hello")
+                .setDbName("testing")
                 .setCreateDbIfNotExist(false)
                 .setProtocol("http")
-                .setHost("localhost")
+                .setHost(couchDbUrl)
                 .setPort(5984)
                 .setUsername(couchDbUsername)
                 .setPassword(couchDbPassword)
