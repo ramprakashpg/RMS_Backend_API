@@ -2,8 +2,12 @@ package org.rms.rms_backend_api.service;
 
 import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
+import org.rms.rms_backend_api.repository.CouchDBRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Sanjay Bharathi
@@ -11,26 +15,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CouchDBService {
-    @Value("${couchdb.url}")
-    private String couchDbUrl;
+    @Autowired
+   CouchDBRepository couchDBRepository;
 
-    @Value("${couchdb.username}")
-    private String couchDbUsername;
+    public List<Object> getAllDocuments() {
+        CouchDbClient couchDbClient = couchDBRepository.getCouchDbClient();
+        //NOTE: Specify the viewId as viewDocumentName/viewName
+        return couchDbClient.view("new/new-view").query(Object.class);
 
-    @Value("${couchdb.password}")
-    private String couchDbPassword;
-
-    public CouchDbClient getCouchDbClient() {
-        CouchDbProperties properties = new CouchDbProperties()
-                .setDbName("db_name")
-                .setCreateDbIfNotExist(false)
-                .setProtocol("http")
-                .setHost(couchDbUrl)
-                .setPort(5984)
-                .setUsername(couchDbUsername)
-                .setPassword(couchDbPassword)
-                .setMaxConnections(100);
-
-        return new CouchDbClient(properties);
     }
+
 }
