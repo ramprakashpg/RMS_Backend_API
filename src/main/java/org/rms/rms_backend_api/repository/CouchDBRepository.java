@@ -1,10 +1,16 @@
 package org.rms.rms_backend_api.repository;
 
+import org.json.JSONObject;
 import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -23,7 +29,7 @@ public class CouchDBRepository {
 
     public CouchDbClient getCouchDbClient() {
         CouchDbProperties properties = new CouchDbProperties()
-                .setDbName("testing")
+                .setDbName("hello")
                 .setCreateDbIfNotExist(false)
                 .setProtocol("http")
                 .setHost(couchDbUrl)
@@ -32,5 +38,29 @@ public class CouchDBRepository {
                 .setPassword(couchDbPassword)
                 .setMaxConnections(100);
         return new CouchDbClient(properties);
+    }
+
+    public HttpURLConnection getPOSTConnection(){
+        try {
+            URL url = new URL("http://192.168.1.132:5984/hello");
+
+            // Create connection
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            // Set up the connection for a POST request
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setDoOutput(true);
+
+            // Set up basic authentication
+            String credentials = "admin" + ":" + "admin";
+            String encodedCredentials = Base64.getEncoder().encodeToString(credentials.getBytes(StandardCharsets.UTF_8));
+            connection.setRequestProperty("Authorization", "Basic " + encodedCredentials);
+            return connection;
+        } catch (Exception e) {
+            // Handle exceptions
+            e.printStackTrace();
+        }
+        return null;
     }
 }
