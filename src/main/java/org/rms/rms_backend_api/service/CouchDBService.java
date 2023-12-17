@@ -43,10 +43,10 @@ public class CouchDBService {
 
     public void saveDocuments(Review review) throws JsonProcessingException {
         CouchDbClient couchDbClient = couchDBRepository.getCouchDbClient();
-        Review newReview = modelMapper.map(review,Review.class);
+        Review newReview = modelMapper.map(review, Review.class);
         ObjectMapper mapper = new ObjectMapper();
         String e = mapper.writeValueAsString(review);
-        JsonObject jsonObject = couchDbClient.getGson().fromJson(e,JsonObject.class);
+        JsonObject jsonObject = couchDbClient.getGson().fromJson(e, JsonObject.class);
         System.out.println(jsonObject);
         couchDbClient.save(jsonObject);
 
@@ -57,7 +57,7 @@ public class CouchDBService {
         HttpURLConnection connection = new CouchDBRepository().getPOSTConnection();
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(obj);
-        org.json.JSONObject jsonBody = new JSONObject(json);
+        org.json.JSONObject jsonBody = new JSONObject().put("body", new JSONObject(json));
 
         try {
             // Write the JSON data to the request body
