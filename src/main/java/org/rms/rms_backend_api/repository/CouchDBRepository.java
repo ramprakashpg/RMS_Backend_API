@@ -53,7 +53,7 @@ public class CouchDBRepository {
             connection.setDoOutput(true);
 
             // Set up basic authentication
-            String credentials = "admin" + ":" + "admin";
+            String credentials = "admin1" + ":" + "admin1";
             String encodedCredentials = Base64.getEncoder().encodeToString(credentials.getBytes(StandardCharsets.UTF_8));
             connection.setRequestProperty("Authorization", "Basic " + encodedCredentials);
             return connection;
