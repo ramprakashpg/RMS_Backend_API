@@ -29,7 +29,7 @@ public class CouchDBRepository {
 
     public CouchDbClient getCouchDbClient() {
         CouchDbProperties properties = new CouchDbProperties()
-                .setDbName("hello")
+                .setDbName("testing")
                 .setCreateDbIfNotExist(false)
                 .setProtocol("http")
                 .setHost(couchDbUrl)
