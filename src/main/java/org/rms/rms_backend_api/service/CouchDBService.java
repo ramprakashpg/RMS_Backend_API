@@ -37,7 +37,7 @@ public class CouchDBService {
     public List<Object> getAllDocuments() {
         CouchDbClient couchDbClient = couchDBRepository.getCouchDbClient();
         //NOTE: Specify the viewId as viewDocumentName/viewName
-        return couchDbClient.view("new/new-view").limit(100).query(Object.class);
+        return couchDbClient.view("reviewID/new-view").limit(100).query(Object.class);
 
     }
 
