@@ -42,7 +42,7 @@ public class CouchDBRepository {
 
     public HttpURLConnection getPOSTConnection(){
         try {
-            URL url = new URL("http://192.168.1.132:5984/hello");
+            URL url = new URL("http://192.168.1.241:5984/testing");
 
             // Create connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
